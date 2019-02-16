@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Ramin Afandiyev</title>
+    <title>Blogs</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -52,37 +53,22 @@
 </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Ramin Afandiyev</h1>
-      <p class="lead text-muted">Django Dev</p>
-      <p>
-        <a href="mailto:raminefendi@gmail.com" class="btn btn-primary my-2">Email Me</a>
-      </p>
-    </div>
-  </section>
+    <h1 class="text-center pt-3">Blogs</h1>
+    <br/>
+    <br/>
+    <h2>Latest Posts</h2>
+    <hr />
+        {% for blog in blogs.all%}
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-        {% for job in jobs.all%}
-
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{job.image.url}}">
-            <div class="card-body">
-              <p class="card-text">{{job.summary}}</p>
-            </div>
-          </div>
-        </div>
-
+            <a href="{% url 'detail' blog.id %}"><h3>{{blog.title}}</h3></a>
+            {{blog.pub_date_pretty}}
+            <br/>
+            <img class="img-fluid" src="{{blog.image.url}}" height=200 width=300 >
+            <br/>
+            <p>{{blog.summary}}</p>
         {% endfor %}
-      </div>
-    </div>
-  </div>
-
+</div>
 </main>
 
 <footer class="text-muted">
